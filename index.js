@@ -9,7 +9,8 @@ function getPlugin () {
       GtQuarter: 'view-in--gt-quarter',
       Out: 'view-out',
       Above: 'view-out--above',
-      Below: 'view-out--below'
+      Below: 'view-out--below',
+      CenterPercent: 'view-center--percent'
     },
     EventTypes = {
       Enter: 'enter',
@@ -61,7 +62,7 @@ function getPlugin () {
       scrollValue = viewportTop - scrollValue
 
       function getInType (i) {
-        var rect = i.element.getBoundingClientRect(),
+        var rect = i.element.getBoundingClientRect() / 2,
           elementTop = rect.top + viewportTop,
           elementBottom = elementTop + rect.height,
           topIn = elementTop > viewportTop && elementTop < viewportBottom,
@@ -98,7 +99,9 @@ function getPlugin () {
         Object.keys(classes).forEach(function (v) {
           classes[v] = false
         })
-
+        if (centerPercent) {
+          classess[ClassNames.CenterPercent] = true
+        }
         if (percentInView >= 0.5) {
           classes[ClassNames.GtHalf] = true
         }
