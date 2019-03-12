@@ -6,6 +6,7 @@ function getPlugin () {
       In: 'view-in',
       GtHalf: 'view-in--gt-half',
       GtThird: 'view-in--gt-third',
+      GtQuarter: 'view-in--gt-quarter',
       Out: 'view-out',
       Above: 'view-out--above',
       Below: 'view-out--below'
@@ -101,8 +102,11 @@ function getPlugin () {
         if (percentInView >= 0.5) {
           classes[ClassNames.GtHalf] = true
         }
-        else if (percentInView >= 0.3) {
+        if (percentInView >= 0.3) {
           classes[ClassNames.GtThird] = true
+        }
+        else if (percentInView >= 0.25) {
+          classes[ClassNames.GtQuarter] = true
         }
 
         if (type === 8) {
